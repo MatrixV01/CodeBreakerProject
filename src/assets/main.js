@@ -12,3 +12,7 @@ function setHiddenFields() {
     answer.value = `0${answer.value}`;
   }
 }
+
+function setMessage(param) {
+  message.innerHTML = param;
+}
