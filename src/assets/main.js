@@ -1,29 +1,6 @@
 const answer = document.getElementById('answer');
 const attempt = document.getElementById('attempt');
 
-function guess() {
-  const input = document.getElementById('user-guess');
-
-  if (answer.value === '' || attempt.value === '') {
-    setHiddenFields();
-  }
-  if (!validateInput(input.value)) {
-    return;
-  }
-  attempt.value++;
-
-  if (getResults(input.value)) {
-    setMessage('You Win! :)');
-    showAnswer(true);
-    showReplay();
-  } else if (attempt.value >= 10) {
-    setMessage('You Lose! :(');
-    showAnswer(false);
-    showReplay();
-  } else {
-    setMessage('Incorrect, try again.');
-  }
-}
 
 function setHiddenFields() {
   answer.value = Math.floor(Math.random() * 10000).toString();
@@ -82,4 +59,28 @@ function validateInput(input) {
   }
   setMessage('Guesses must be exactly 4 characters long.');
   return false;
+}
+
+function guess() {
+  const input = document.getElementById('user-guess');
+
+  if (answer.value === '' || attempt.value === '') {
+    setHiddenFields();
+  }
+  if (!validateInput(input.value)) {
+    return;
+  }
+  attempt.value++;
+
+  if (getResults(input.value)) {
+    setMessage('You Win! :)');
+    showAnswer(true);
+    showReplay();
+  } else if (attempt.value >= 10) {
+    setMessage('You Lose! :(');
+    showAnswer(false);
+    showReplay();
+  } else {
+    setMessage('Incorrect, try again.');
+  }
 }
